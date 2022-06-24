@@ -1,0 +1,57 @@
+*::before::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#section1{
+    background-image: url("../img/ZB3uqq.jpg");
+}
+
+
+.bgbluish{
+    background: #101848;
+}
+.bgdark{
+    background:  #1D2144;
+}
+.bgdark1{
+    background:  #0b113a;
+}
+.bgdark2{
+    background:  #090E34;
+}
+.inputareacolor{
+    background: #242B51;
+}
+.bgimg{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    backdrop-filter: blur(8px) !important;
+    
+    
+}
+
+.py10{
+    padding:10% 0;
+}
+
+.py20{
+    padding:20% 0;
+}
+
+.fsbig{
+    font-size: 8vh;
+}
+
+.mt10{
+    margin-top: 10%;
+}
+
+hr{
+    color: white !important;
+}
