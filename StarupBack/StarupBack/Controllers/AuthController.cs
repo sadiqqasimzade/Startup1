@@ -37,8 +37,19 @@ namespace StarupBack.Controllers
                 ModelState.AddModelError("", "Fill all Inputs");
                 return View(loginVM);
             }
+            AppUser user = null;
+            if (loginVM.Login.Contains("@"))
+                user = await _usermanager.FindByEmailAsync(loginVM.Login);
 
-            var result = await _signInManager.PasswordSignInAsync(loginVM.Login, loginVM.Password, loginVM.RememberMe, true);
+            else
+                user = await _usermanager.FindByNameAsync(loginVM.Login);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Wrong Login/Password"); ;
+                return View(loginVM);
+            }
+            var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, true);
             if (!result.Succeeded)
             {
                 if (result.IsLockedOut)
@@ -66,7 +77,9 @@ namespace StarupBack.Controllers
             }
             AppUser user = new AppUser()
             {
-                UserName = registerVM.Login
+                UserName = registerVM.Login,
+                Email = registerVM.Email
+
             };
             var result = await _usermanager.CreateAsync(user, registerVM.Password);
             if (!result.Succeeded)

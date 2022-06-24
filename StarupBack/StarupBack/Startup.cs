@@ -39,7 +39,7 @@ namespace StarupBack
                 opt.Password.RequireUppercase = true;
                 opt.Password.RequiredLength = 8;
                 opt.Password.RequireNonAlphanumeric = false;
-                opt.User.RequireUniqueEmail = false;
+                opt.User.RequireUniqueEmail = true;
                 opt.Lockout.MaxFailedAccessAttempts = 3;
                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             });
